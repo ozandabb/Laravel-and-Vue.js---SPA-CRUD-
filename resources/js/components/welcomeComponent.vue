@@ -3,7 +3,6 @@
     <div class="container">
         <div style="height:80px; background-color:black">
             <h2 class="text-center" style="color:white; padding-top:20px;">OpusXenta (PVT) Ltd</h2>
-
         </div>
         
         <div class="row justify-content-center" style="margin-top:30px">
@@ -21,8 +20,11 @@
                     </li>
                 </ul>
                 <div class="tab-content" id="myTabContent">
+
+                    <!-- Staff tab section start here -->
                     <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
                         
+                        <!-- Create button and search section start here -->
                         <div class="row justify-content-center" style="margin-top:20px">
                             <div class="col-md-12">
                                 <div class="row">
@@ -37,12 +39,11 @@
                                             </div>
                                         </form>
                                     </div>
-
                                 </div>
-                                
                             </div>
                         </div>
 
+                        <!-- Staff list table section start here -->
                         <div class="row justify-content-center" style="margin-top:20px">
                             <div class="col-md-12">
                                 <table class="table table-striped">
@@ -94,14 +95,12 @@
                                         </tr>
                                     </tbody>
                                 </table>
-
-                                
                             </div>
                         </div>
 
+                        <!-- Pagination section start here -->
                         <div class="row justify-content-center" style="margin-top:20px">
                             <div class="col-md-12">
-                                <!-- <pagination :data="staff" @pagination-change-page="getResults"></pagination> -->
                                 <pagination :data="staff"  @pagination-change-page="getStaff">
                                     <span slot="prev-nav">&lt; Previous</span>
                                     <span slot="next-nav">Next &gt;</span>
@@ -109,14 +108,22 @@
                             </div>
                         </div>
 
-
-
                     </div>
+                    <!-- Staff tab section ends here -->
+
+                    <!-- Department section start here -->
                     <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
                         <router-link to="/departments" class="btn btn-primary">Departments </router-link>
                         <hr>
                     </div>
-                    <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">eee</div>
+                    <!-- Department section ends here -->
+
+                    <!-- Contact section start here -->
+                    <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
+                        contact section
+                    </div>
+                    <!-- Contact section ends here -->
+
                 </div>
 
             </div>
@@ -132,23 +139,18 @@
     export default {
         data(){
             return{
-                staff:{},
-                searchQuery: null,
-                search : "",
-                searchName: "",
-                position:"",
-                name:"",
-                sort_direction:'desc',
-                sort_field: 'created_at'
-
+                staff:{},                                   //  Staff Object
+                searchQuery: null,                          //  Didn't use this variable
+                search : "",                                //  search v model variable
+                searchName: "",                             //  name column text field v model
+                position:"",                                //  v model for postition
+                name:"",                                    //  v model for name
+                sort_direction:'desc',                      //  sorting direction variable
+                sort_field: 'created_at'                    //  sorting field variable
             }
-        },
-        watch: {
-
         },
         computed: function() {
             this.fetchdataStaff();
-       
         },
         mounted() {
             this.getStaff();
@@ -172,13 +174,13 @@
 
             },
 
+            // Sorting method
             changeSort(field){
                 if(this.sort_field = field){
                     this.sort_direction = this.sort_direction == 'asc' ? 'desc' : 'asc'
                 }else{
                     this.sort_field = field;
                 }
-                
                 this.getStaff();
             },
 
@@ -207,7 +209,6 @@
                         )
                     }
                 })
-
             },
 
             seachStaffByName() {
@@ -215,9 +216,7 @@
                     post.name.toLowerCase().includes(this.searchName.toLowerCase()),
                 );
             }
-            
         },
         
-
     }
 </script>

@@ -1971,6 +1971,10 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -2484,20 +2488,34 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
       staff: {},
+      //  Staff Object
       searchQuery: null,
+      //  Didn't use this variable
       search: "",
+      //  search v model variable
       searchName: "",
+      //  name column text field v model
       position: "",
+      //  v model for postition
       name: "",
+      //  v model for name
       sort_direction: 'desc',
-      sort_field: 'created_at'
+      //  sorting direction variable
+      sort_field: 'created_at' //  sorting field variable
+
     };
   },
-  watch: {},
   computed: function computed() {
     this.fetchdataStaff();
   },
@@ -2523,6 +2541,7 @@ __webpack_require__.r(__webpack_exports__);
         _this2.staff = response.data;
       });
     },
+    // Sorting method
     changeSort: function changeSort(field) {
       if (this.sort_field = field) {
         this.sort_direction = this.sort_direction == 'asc' ? 'desc' : 'asc';
@@ -64546,6 +64565,8 @@ var render = function () {
                   ]),
                 ]),
                 _vm._v(" "),
+                _c("div", { staticClass: "form-group" }),
+                _vm._v(" "),
                 _vm._m(0),
               ]
             ),
@@ -65724,7 +65745,11 @@ var render = function () {
                     "aria-labelledby": "contact-tab",
                   },
                 },
-                [_vm._v("eee")]
+                [
+                  _vm._v(
+                    "\n                    contact section\n                "
+                  ),
+                ]
               ),
             ]
           ),
@@ -86282,21 +86307,16 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vue_axios__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! vue-axios */ "./node_modules/vue-axios/dist/vue-axios.esm.min.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var v_toaster__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! v-toaster */ "./node_modules/v-toaster/dist/v-toaster.js");
-/* harmony import */ var v_toaster__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(v_toaster__WEBPACK_IMPORTED_MODULE_4__);
-/* harmony import */ var sweetalert2__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! sweetalert2 */ "./node_modules/sweetalert2/dist/sweetalert2.all.js");
-/* harmony import */ var sweetalert2__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(sweetalert2__WEBPACK_IMPORTED_MODULE_5__);
-/* harmony import */ var sweetalert2_src_sweetalert2_scss__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! sweetalert2/src/sweetalert2.scss */ "./node_modules/sweetalert2/src/sweetalert2.scss");
-/* harmony import */ var sweetalert2_src_sweetalert2_scss__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(sweetalert2_src_sweetalert2_scss__WEBPACK_IMPORTED_MODULE_6__);
-/* harmony import */ var v_toaster_dist_v_toaster_css__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! v-toaster/dist/v-toaster.css */ "./node_modules/v-toaster/dist/v-toaster.css");
-/* harmony import */ var v_toaster_dist_v_toaster_css__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(v_toaster_dist_v_toaster_css__WEBPACK_IMPORTED_MODULE_7__);
+/* harmony import */ var sweetalert2__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! sweetalert2 */ "./node_modules/sweetalert2/dist/sweetalert2.all.js");
+/* harmony import */ var sweetalert2__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(sweetalert2__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var v_toaster__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! v-toaster */ "./node_modules/v-toaster/dist/v-toaster.js");
+/* harmony import */ var v_toaster__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(v_toaster__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var v_toaster_dist_v_toaster_css__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! v-toaster/dist/v-toaster.css */ "./node_modules/v-toaster/dist/v-toaster.css");
+/* harmony import */ var v_toaster_dist_v_toaster_css__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(v_toaster_dist_v_toaster_css__WEBPACK_IMPORTED_MODULE_6__);
+/* harmony import */ var sweetalert2_src_sweetalert2_scss__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! sweetalert2/src/sweetalert2.scss */ "./node_modules/sweetalert2/src/sweetalert2.scss");
+/* harmony import */ var sweetalert2_src_sweetalert2_scss__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(sweetalert2_src_sweetalert2_scss__WEBPACK_IMPORTED_MODULE_7__);
 /* harmony import */ var vue_table_component__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! vue-table-component */ "./node_modules/vue-table-component/dist/index.js");
 /* harmony import */ var vue_table_component__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(vue_table_component__WEBPACK_IMPORTED_MODULE_8__);
-/**
- * First we will load all of this project's JavaScript dependencies which
- * includes Vue and other libraries. It is a great starting point when
- * building robust, powerful web applications using Vue and Laravel.
- */
 __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
 window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.js");
@@ -86307,35 +86327,18 @@ window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.
 
 
 
-window.Swal = sweetalert2__WEBPACK_IMPORTED_MODULE_5___default.a;
 
 
-Vue.component('table-component', vue_table_component__WEBPACK_IMPORTED_MODULE_8__["TableComponent"]);
-Vue.component('table-column', vue_table_component__WEBPACK_IMPORTED_MODULE_8__["TableColumn"]);
-Vue.component('pagination', __webpack_require__(/*! laravel-vue-pagination */ "./node_modules/laravel-vue-pagination/dist/laravel-vue-pagination.common.js"));
+window.Swal = sweetalert2__WEBPACK_IMPORTED_MODULE_4___default.a;
 Vue.use(vue_router__WEBPACK_IMPORTED_MODULE_0__["default"]);
 Vue.use(vue_axios__WEBPACK_IMPORTED_MODULE_2__["default"], axios__WEBPACK_IMPORTED_MODULE_3___default.a);
-Vue.use(v_toaster__WEBPACK_IMPORTED_MODULE_4___default.a, {
+Vue.use(v_toaster__WEBPACK_IMPORTED_MODULE_5___default.a, {
   timeout: 5000
 });
+Vue.component('table-column', vue_table_component__WEBPACK_IMPORTED_MODULE_8__["TableColumn"]);
+Vue.component('table-component', vue_table_component__WEBPACK_IMPORTED_MODULE_8__["TableComponent"]);
+Vue.component('pagination', __webpack_require__(/*! laravel-vue-pagination */ "./node_modules/laravel-vue-pagination/dist/laravel-vue-pagination.common.js"));
 var router = new vue_router__WEBPACK_IMPORTED_MODULE_0__["default"](_routes__WEBPACK_IMPORTED_MODULE_1__["default"]);
-/**
- * The following block of code may be used to automatically register your
- * Vue components. It will recursively scan this directory for the Vue
- * components and automatically register them with their "basename".
- *
- * Eg. ./components/ExampleComponent.vue -> <example-component></example-component>
- */
-// const files = require.context('./', true, /\.vue$/i)
-// files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
-// Vue.component('example-component', require('./components/ExampleComponent.vue').default);
-
-/**
- * Next, we will create a fresh Vue application instance and attach it to
- * the page. Then, you may begin adding components to this application
- * or customize the JavaScript scaffolding to fit your unique needs.
- */
-
 var app = new Vue({
   el: '#app',
   router: router

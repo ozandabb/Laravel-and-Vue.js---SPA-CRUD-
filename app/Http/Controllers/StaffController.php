@@ -32,7 +32,10 @@ class StaffController extends Controller
 
     public function index() {
 
-        $emps = Staff::orderby('id', 'desc')->paginate(4);
+        $sort_direction = request('sort_direction', 'desc');
+        $sort_field = request('sort_field', 'created_at');
+
+        $emps = Staff::orderBy($sort_field, $sort_direction )->paginate(4);
         return response()->json($emps);
     }
 
@@ -72,17 +75,19 @@ class StaffController extends Controller
     }
 
     public function searchStaff(request $request){
-        
+
+        $sort_direction = request('sort_direction', 'desc');
+        $sort_field = request('sort_field', 'created_at');
         
         if($request->search){
             $search = $request->search;
-            $staff = Staff::where('name', 'LIKE', "%$search%")->paginate(4);
+            $staff = Staff::where('name', 'LIKE', "%$search%")->orderBy($sort_field, $sort_direction )->paginate(4);
         }else if($request->position){
             $search = $request->position;
-            $staff = Staff::where('position', 'LIKE', "%$search%")->paginate(4);
+            $staff = Staff::where('position', 'LIKE', "%$search%")->orderBy($sort_field, $sort_direction )->paginate(4);
         }else if($request->name){
             $search = $request->name;
-            $staff = Staff::where('name', 'LIKE', "%$search%")->paginate(4);
+            $staff = Staff::where('name', 'LIKE', "%$search%")->orderBy($sort_field, $sort_direction )->paginate(4);
         }
         
 

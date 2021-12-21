@@ -2484,13 +2484,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -2499,7 +2492,9 @@ __webpack_require__.r(__webpack_exports__);
       search: "",
       searchName: "",
       position: "",
-      name: ""
+      name: "",
+      sort_direction: 'desc',
+      sort_field: 'created_at'
     };
   },
   watch: {},
@@ -2516,7 +2511,7 @@ __webpack_require__.r(__webpack_exports__);
       var _this = this;
 
       var page = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 1;
-      axios.get('index?page=' + page).then(function (response) {
+      axios.get('index?page=' + page + '&sort_direction=' + this.sort_direction + '&sort_field=' + this.sort_field).then(function (response) {
         _this.staff = response.data;
       });
     },
@@ -2524,9 +2519,18 @@ __webpack_require__.r(__webpack_exports__);
     fetchdataStaff: function fetchdataStaff() {
       var _this2 = this;
 
-      axios.get('searchStaff?search=' + this.search + '&name=' + this.name + '&position=' + this.position).then(function (response) {
+      axios.get('searchStaff?search=' + this.search + '&name=' + this.name + '&position=' + this.position + '&sort_direction=' + this.sort_direction + '&sort_field=' + this.sort_field).then(function (response) {
         _this2.staff = response.data;
       });
+    },
+    changeSort: function changeSort(field) {
+      if (this.sort_field = field) {
+        this.sort_direction = this.sort_direction == 'asc' ? 'desc' : 'asc';
+      } else {
+        this.sort_field = field;
+      }
+
+      this.getStaff();
     },
     // Delete staff function
     deleteStaffMember: function deleteStaffMember(id) {
@@ -65434,7 +65438,67 @@ var render = function () {
                       _c("div", { staticClass: "col-md-12" }, [
                         _c("table", { staticClass: "table table-striped" }, [
                           _c("thead", [
-                            _vm._m(2),
+                            _c("tr", [
+                              _c("th", [_vm._v("#")]),
+                              _vm._v(" "),
+                              _c("th", [
+                                _c(
+                                  "a",
+                                  {
+                                    attrs: { href: "" },
+                                    on: {
+                                      click: function ($event) {
+                                        $event.preventDefault()
+                                        return _vm.changeSort("name")
+                                      },
+                                    },
+                                  },
+                                  [_vm._v("Name")]
+                                ),
+                                _vm._v(" "),
+                                _vm.sort_direction == "desc" &&
+                                _vm.sort_field == "name"
+                                  ? _c("span", [_vm._v("↑")])
+                                  : _vm._e(),
+                                _vm._v(" "),
+                                _vm.sort_direction == "asc" &&
+                                _vm.sort_field == "name"
+                                  ? _c("span", [_vm._v("↓")])
+                                  : _vm._e(),
+                              ]),
+                              _vm._v(" "),
+                              _c("th", [
+                                _c(
+                                  "a",
+                                  {
+                                    attrs: { href: "" },
+                                    on: {
+                                      click: function ($event) {
+                                        $event.preventDefault()
+                                        return _vm.changeSort("position")
+                                      },
+                                    },
+                                  },
+                                  [_vm._v("Position")]
+                                ),
+                                _vm._v(" "),
+                                _vm.sort_direction == "desc" &&
+                                _vm.sort_field == "position"
+                                  ? _c("span", [_vm._v("↑")])
+                                  : _vm._e(),
+                                _vm._v(" "),
+                                _vm.sort_direction == "asc" &&
+                                _vm.sort_field == "position"
+                                  ? _c("span", [_vm._v("↓")])
+                                  : _vm._e(),
+                              ]),
+                              _vm._v(" "),
+                              _c("th", [_vm._v("Status")]),
+                              _vm._v(" "),
+                              _c("th", [_vm._v("Email")]),
+                              _vm._v(" "),
+                              _c("th", [_vm._v("Action")]),
+                            ]),
                             _vm._v(" "),
                             _c("tr", [
                               _c("th"),
@@ -65752,24 +65816,6 @@ var staticRenderFns = [
         ]),
       ]
     )
-  },
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("tr", [
-      _c("th", [_vm._v("#")]),
-      _vm._v(" "),
-      _c("th", [_vm._v("Name")]),
-      _vm._v(" "),
-      _c("th", [_vm._v("Position")]),
-      _vm._v(" "),
-      _c("th", [_vm._v("Status")]),
-      _vm._v(" "),
-      _c("th", [_vm._v("Email")]),
-      _vm._v(" "),
-      _c("th", [_vm._v("Action")]),
-    ])
   },
 ]
 render._withStripped = true

@@ -49,8 +49,16 @@
                                     <thead >
                                         <tr>
                                             <th>#</th>
-                                            <th>Name</th>
-                                            <th>Position</th>
+                                            <th>
+                                                <a href="" @click.prevent="changeSort('name')">Name</a>
+                                                <span v-if="sort_direction == 'desc' && sort_field == 'name'">&uarr;</span>
+                                                <span v-if="sort_direction == 'asc' && sort_field == 'name'">&darr;</span>
+                                            </th>
+                                            <th>
+                                                <a href="" @click.prevent="changeSort('position')">Position</a>
+                                                <span v-if="sort_direction == 'desc' && sort_field == 'position'">&uarr;</span>
+                                                <span v-if="sort_direction == 'asc' && sort_field == 'position'">&darr;</span>
+                                            </th>
                                             <th>Status</th>
                                             <th>Email</th>
                                             <th>Action</th>
@@ -103,10 +111,6 @@
 
 
 
-
-
-
-
                     </div>
                     <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
                         <router-link to="/departments" class="btn btn-primary">Departments </router-link>
@@ -115,19 +119,8 @@
                     <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">eee</div>
                 </div>
 
-
-                
-                
-                
             </div>
         </div>
-
-        
-
-        
-
-
-
     </div>
 
  
@@ -144,7 +137,9 @@
                 search : "",
                 searchName: "",
                 position:"",
-                name:""
+                name:"",
+                sort_direction:'desc',
+                sort_field: 'created_at'
 
             }
         },
@@ -163,18 +158,28 @@
 
             // GET all staff function
             getStaff(page = 1) {
-                axios.get('index?page=' + page).then((response) => {
+                axios.get('index?page=' + page + '&sort_direction=' + this.sort_direction + '&sort_field=' + this.sort_field).then((response) => {
                     this.staff = response.data;
                 })
             },
 
             // Filter data function
             fetchdataStaff(){
-                axios.get('searchStaff?search='+this.search+'&name='+this.name+'&position='+this.position)
+                axios.get('searchStaff?search=' + this.search + '&name=' + this.name + '&position=' + this.position + '&sort_direction=' + this.sort_direction + '&sort_field=' + this.sort_field)
                 .then(response => {
                     this.staff = response.data;
                 });
 
+            },
+
+            changeSort(field){
+                if(this.sort_field = field){
+                    this.sort_direction = this.sort_direction == 'asc' ? 'desc' : 'asc'
+                }else{
+                    this.sort_field = field;
+                }
+                
+                this.getStaff();
             },
 
             // Delete staff function
